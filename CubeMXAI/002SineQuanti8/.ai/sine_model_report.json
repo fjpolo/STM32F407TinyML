@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 0,
     "_allocate_outputs": 0,
-    "cli_parameters": "generate --name sine_model -m C:/Daten/KeilProjects/AI/STM32F407TinyML/models/sine/noquant/model_no_quant.tflite --type tflite --compression 1 --verbosity 1 --workspace C:\\Users\\fpolo\\AppData\\Local\\Temp\\mxAI_workspace823883724782009080662707027992378 --output C:\\Users\\fpolo\\.stm32cubemx",
+    "cli_parameters": "generate --name sine_model -m C:/Daten/KeilProjects/AI/STM32F407TinyML/models/sine/quantint8/model.tflite --type tflite --compression 1 --verbosity 1 --workspace C:\\Users\\fpolo\\AppData\\Local\\Temp\\mxAI_workspace852730747230007100697505543914208 --output C:\\Users\\fpolo\\.stm32cubemx",
     "cli_version": {
         "major": 1,
         "micro": 0,
@@ -12,16 +12,16 @@
         "factor": null,
         "layers": {}
     },
-    "date_time": "Wed Mar  3 14:16:36 2021",
+    "date_time": "Wed Mar  3 15:04:22 2021",
     "error": 0,
     "error_str": [],
     "evaluation_measures": [],
     "evaluation_status": "NOT EVALUATED",
     "exec_cmd": "generate",
-    "exec_duration": 9.753160238265991,
-    "hash": "fc21404b476ccf412dd3f3274e7c9280",
+    "exec_duration": 9.172598361968994,
+    "hash": "68c39c93115df89ad054af13d6b4c713",
     "inputs": [
-        "dense_2_input"
+        "dense_7_input"
     ],
     "l2_error": -1.0,
     "l2_status": "NOT EVALUATED",
@@ -59,14 +59,14 @@
             },
             "id": 0,
             "inputs": [],
-            "name": "dense_2_input",
+            "name": "dense_7_input",
             "out_shapes": [
                 [
                     1
                 ]
             ],
             "outputs": [
-                "dense_2_input"
+                "dense_7_input"
             ],
             "shape": [
                 1
@@ -77,74 +77,32 @@
             "extras": {
                 "c_l2_error": 0,
                 "c_l2_id": -1,
-                "n_macc": 16,
-                "n_params": 32,
-                "psize": 128,
-                "rom_n_params": 32,
-                "rom_output": {
-                    "c_size": 64,
-                    "fmt": {
-                        "c_bits": [
-                            32,
-                            0
-                        ],
-                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
-                        "c_size": 4,
-                        "c_type": "ai_float",
-                        "format": "FLOAT32"
-                    },
-                    "shape": [
-                        1,
-                        1,
-                        16,
-                        1
-                    ]
-                },
-                "rom_size": 128,
-                "rom_size_params": 128,
-                "rom_trans": null
-            },
-            "id": 0,
-            "inputs": [
-                "dense_2_input"
-            ],
-            "name": "dense_0",
-            "num_units": 16,
-            "out_shapes": [
-                [
-                    16
-                ]
-            ],
-            "outputs": [
-                "dense_0"
-            ],
-            "type": "Dense",
-            "use_bias": true
-        },
-        {
-            "extras": {
-                "c_l2_error": 0,
-                "c_l2_id": -1,
-                "n_macc": 16,
+                "n_macc": 2,
                 "n_params": 0,
                 "psize": 0,
                 "rom_n_params": 0,
                 "rom_output": {
-                    "c_size": 64,
+                    "c_size": 1,
                     "fmt": {
                         "c_bits": [
-                            32,
+                            8,
                             0
                         ],
-                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
-                        "c_size": 4,
-                        "c_type": "ai_float",
-                        "format": "FLOAT32"
+                        "c_format": "AI_ARRAY_FORMAT_S8",
+                        "c_size": 1,
+                        "c_type": "ai_i8",
+                        "format": "S8",
+                        "scale": [
+                            0.024573976173996925
+                        ],
+                        "zero": [
+                            -128
+                        ]
                     },
                     "shape": [
                         1,
                         1,
-                        16,
+                        1,
                         1
                     ]
                 },
@@ -154,39 +112,44 @@
             },
             "id": 0,
             "inputs": [
-                "dense_0"
+                "dense_7_input"
             ],
-            "name": "nl_0",
-            "nonlinearity": "relu",
+            "name": "conversion_0",
             "out_shapes": [
                 [
-                    16
+                    1
                 ]
             ],
             "outputs": [
-                "nl_0"
+                "conversion_0"
             ],
-            "type": "Nonlinearity"
+            "type": "Conversion"
         },
         {
             "extras": {
                 "c_l2_error": 0,
                 "c_l2_id": -1,
-                "n_macc": 256,
-                "n_params": 272,
-                "psize": 1088,
-                "rom_n_params": 272,
+                "n_macc": 16,
+                "n_params": 32,
+                "psize": 80,
+                "rom_n_params": 32,
                 "rom_output": {
-                    "c_size": 64,
+                    "c_size": 16,
                     "fmt": {
                         "c_bits": [
-                            32,
+                            8,
                             0
                         ],
-                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
-                        "c_size": 4,
-                        "c_type": "ai_float",
-                        "format": "FLOAT32"
+                        "c_format": "AI_ARRAY_FORMAT_S8",
+                        "c_size": 1,
+                        "c_type": "ai_i8",
+                        "format": "S8",
+                        "scale": [
+                            0.012199243530631065
+                        ],
+                        "zero": [
+                            -128
+                        ]
                     },
                     "shape": [
                         1,
@@ -195,13 +158,13 @@
                         1
                     ]
                 },
-                "rom_size": 1088,
-                "rom_size_params": 1088,
-                "rom_trans": null
+                "rom_size": 80,
+                "rom_size_params": 80,
+                "rom_trans": "i"
             },
             "id": 1,
             "inputs": [
-                "nl_0"
+                "conversion_0"
             ],
             "name": "dense_1",
             "num_units": 16,
@@ -220,29 +183,11 @@
             "extras": {
                 "c_l2_error": 0,
                 "c_l2_id": -1,
-                "n_macc": 16,
+                "n_macc": 0,
                 "n_params": 0,
                 "psize": 0,
                 "rom_n_params": 0,
-                "rom_output": {
-                    "c_size": 64,
-                    "fmt": {
-                        "c_bits": [
-                            32,
-                            0
-                        ],
-                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
-                        "c_size": 4,
-                        "c_type": "ai_float",
-                        "format": "FLOAT32"
-                    },
-                    "shape": [
-                        1,
-                        1,
-                        16,
-                        1
-                    ]
-                },
+                "rom_output": null,
                 "rom_size": 0,
                 "rom_size_params": 0,
                 "rom_trans": null
@@ -267,10 +212,147 @@
             "extras": {
                 "c_l2_error": 0,
                 "c_l2_id": -1,
+                "n_macc": 256,
+                "n_params": 272,
+                "psize": 320,
+                "rom_n_params": 272,
+                "rom_output": {
+                    "c_size": 16,
+                    "fmt": {
+                        "c_bits": [
+                            8,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_S8",
+                        "c_size": 1,
+                        "c_type": "ai_i8",
+                        "format": "S8",
+                        "scale": [
+                            0.005884401500225067
+                        ],
+                        "zero": [
+                            -128
+                        ]
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 320,
+                "rom_size_params": 320,
+                "rom_trans": "i"
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1"
+            ],
+            "name": "dense_2",
+            "num_units": 16,
+            "out_shapes": [
+                [
+                    16
+                ]
+            ],
+            "outputs": [
+                "dense_2"
+            ],
+            "type": "Dense",
+            "use_bias": true
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
+                "rom_output": null,
+                "rom_size": 0,
+                "rom_size_params": 0,
+                "rom_trans": null
+            },
+            "id": 2,
+            "inputs": [
+                "dense_2"
+            ],
+            "name": "nl_2",
+            "nonlinearity": "relu",
+            "out_shapes": [
+                [
+                    16
+                ]
+            ],
+            "outputs": [
+                "nl_2"
+            ],
+            "type": "Nonlinearity"
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
                 "n_macc": 16,
                 "n_params": 17,
-                "psize": 68,
+                "psize": 20,
                 "rom_n_params": 17,
+                "rom_output": {
+                    "c_size": 1,
+                    "fmt": {
+                        "c_bits": [
+                            8,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_S8",
+                        "c_size": 1,
+                        "c_type": "ai_i8",
+                        "format": "S8",
+                        "scale": [
+                            0.008472008630633354
+                        ],
+                        "zero": [
+                            4
+                        ]
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 20,
+                "rom_size_params": 20,
+                "rom_trans": "i"
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2"
+            ],
+            "name": "dense_3",
+            "num_units": 1,
+            "out_shapes": [
+                [
+                    1
+                ]
+            ],
+            "outputs": [
+                "dense_3"
+            ],
+            "type": "Dense",
+            "use_bias": true
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 2,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
                 "rom_output": {
                     "c_size": 4,
                     "fmt": {
@@ -290,48 +372,46 @@
                         1
                     ]
                 },
-                "rom_size": 68,
-                "rom_size_params": 68,
+                "rom_size": 0,
+                "rom_size_params": 0,
                 "rom_trans": null
             },
-            "id": 2,
+            "id": 4,
             "inputs": [
-                "nl_1"
+                "dense_3"
             ],
-            "name": "dense_2",
-            "num_units": 1,
+            "name": "conversion_4",
             "out_shapes": [
                 [
                     1
                 ]
             ],
             "outputs": [
-                "dense_2"
+                "conversion_4"
             ],
-            "type": "Dense",
-            "use_bias": true
+            "type": "Conversion"
         }
     ],
-    "maxlen_name": 21,
-    "md5": "fc21404b476ccf412dd3f3274e7c9280",
+    "maxlen_name": 25,
+    "md5": "68c39c93115df89ad054af13d6b4c713",
     "model_files": [
-        "C:\\Daten\\KeilProjects\\AI\\STM32F407TinyML\\models\\sine\\noquant\\model_no_quant.tflite"
+        "C:\\Daten\\KeilProjects\\AI\\STM32F407TinyML\\models\\sine\\quantint8\\model.tflite"
     ],
     "model_n_params": 321,
-    "model_name": "model_no_quant",
-    "model_size": 1284,
+    "model_name": "model",
+    "model_size": 420,
     "model_type": "tflite (tflite)",
     "name": "sine_model",
     "outputs": [
-        "dense_2"
+        "conversion_4"
     ],
     "ram_io_size": [
         4,
         4
     ],
     "ram_size": [
-        128,
-        128
+        32,
+        32
     ],
     "report_version": 1.0,
     "rom_cfact": null,
@@ -344,22 +424,22 @@
         {
             "c_size": 4,
             "c_type": "ai_float",
-            "name": "dense_2_input"
+            "name": "dense_7_input"
         }
     ],
     "rom_l2_error_max": 0.0,
     "rom_n_c_nodes": 5,
-    "rom_n_macc": 320,
+    "rom_n_macc": 292,
     "rom_n_macc_max": 256,
     "rom_outputs": [
         {
             "c_size": 4,
             "c_type": "ai_float",
-            "name": "dense_2"
+            "name": "conversion_4"
         }
     ],
-    "rom_size": 1284,
-    "rom_size_max": 1088,
+    "rom_size": 420,
+    "rom_size_max": 320,
     "rom_stack": [
         0,
         0
