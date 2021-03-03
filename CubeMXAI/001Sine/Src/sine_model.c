@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    sine_model.c
   * @author  AST Embedded Analytics Research Platform
-  * @date    Wed Mar  3 10:44:30 2021
+  * @date    Wed Mar  3 14:16:36 2021
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -48,14 +48,14 @@
 #define AI_NET_OBJ_INSTANCE g_sine_model
  
 #undef AI_SINE_MODEL_MODEL_SIGNATURE
-#define AI_SINE_MODEL_MODEL_SIGNATURE     "1b943b3e84d564e0f211802e97903f5d"
+#define AI_SINE_MODEL_MODEL_SIGNATURE     "fc21404b476ccf412dd3f3274e7c9280"
 
 #ifndef AI_TOOLS_REVISION_ID
 #define AI_TOOLS_REVISION_ID     "(rev-5.2.0)"
 #endif
 
 #undef AI_TOOLS_DATE_TIME
-#define AI_TOOLS_DATE_TIME   "Wed Mar  3 10:44:30 2021"
+#define AI_TOOLS_DATE_TIME   "Wed Mar  3 14:16:36 2021"
 
 #undef AI_TOOLS_COMPILE_TIME
 #define AI_TOOLS_COMPILE_TIME    __DATE__ " " __TIME__
@@ -74,7 +74,7 @@ AI_STATIC ai_array dense_1_bias_array;   /* Array #2 */
 AI_STATIC ai_array dense_1_weights_array;   /* Array #3 */
 AI_STATIC ai_array dense_0_bias_array;   /* Array #4 */
 AI_STATIC ai_array dense_0_weights_array;   /* Array #5 */
-AI_STATIC ai_array serving_default_dense_2_input0_output_array;   /* Array #6 */
+AI_STATIC ai_array dense_2_input_output_array;   /* Array #6 */
 AI_STATIC ai_array dense_0_output_array;   /* Array #7 */
 AI_STATIC ai_array nl_0_output_array;   /* Array #8 */
 AI_STATIC ai_array dense_1_output_array;   /* Array #9 */
@@ -89,7 +89,7 @@ AI_STATIC ai_tensor dense_1_bias;   /* Tensor #2 */
 AI_STATIC ai_tensor dense_1_weights;   /* Tensor #3 */
 AI_STATIC ai_tensor dense_0_bias;   /* Tensor #4 */
 AI_STATIC ai_tensor dense_0_weights;   /* Tensor #5 */
-AI_STATIC ai_tensor serving_default_dense_2_input0_output;   /* Tensor #6 */
+AI_STATIC ai_tensor dense_2_input_output;   /* Tensor #6 */
 AI_STATIC ai_tensor dense_0_output;   /* Tensor #7 */
 AI_STATIC ai_tensor nl_0_output;   /* Tensor #8 */
 AI_STATIC ai_tensor dense_1_output;   /* Tensor #9 */
@@ -146,7 +146,7 @@ AI_ARRAY_OBJ_DECLARE(
 
 /* Array#6 */
 AI_ARRAY_OBJ_DECLARE(
-  serving_default_dense_2_input0_output_array, AI_ARRAY_FORMAT_FLOAT|AI_FMT_FLAG_IS_IO,
+  dense_2_input_output_array, AI_ARRAY_FORMAT_FLOAT|AI_FMT_FLAG_IS_IO,
   NULL, NULL, 1, AI_STATIC)
 
 /* Array#7 */
@@ -219,10 +219,10 @@ AI_TENSOR_OBJ_DECLARE(
 
 /* Tensor #6 */
 AI_TENSOR_OBJ_DECLARE(
-  serving_default_dense_2_input0_output, AI_STATIC,
+  dense_2_input_output, AI_STATIC,
   0x0, 0x0,
   AI_SHAPE_INIT(4, 1, 1, 1, 1), AI_STRIDE_INIT(4, 4, 4, 4, 4),
-  1, &serving_default_dense_2_input0_output_array, NULL)
+  1, &dense_2_input_output_array, NULL)
 
 /* Tensor #7 */
 AI_TENSOR_OBJ_DECLARE(
@@ -266,7 +266,7 @@ AI_TENSOR_OBJ_DECLARE(
 
 AI_TENSOR_CHAIN_OBJ_DECLARE(
   dense_0_chain, AI_STATIC_CONST, 4,
-  AI_TENSOR_LIST_OBJ_INIT(AI_FLAG_NONE, 1, &serving_default_dense_2_input0_output),
+  AI_TENSOR_LIST_OBJ_INIT(AI_FLAG_NONE, 1, &dense_2_input_output),
   AI_TENSOR_LIST_OBJ_INIT(AI_FLAG_NONE, 1, &dense_0_output),
   AI_TENSOR_LIST_OBJ_INIT(AI_FLAG_NONE, 2, &dense_0_weights, &dense_0_bias),
   AI_TENSOR_LIST_OBJ_EMPTY
@@ -353,7 +353,7 @@ AI_NETWORK_OBJ_DECLARE(
   AI_BUFFER_OBJ_INIT(AI_BUFFER_FORMAT_U8,
                      1, 1, 128, 1,
                      NULL),
-  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_SINE_MODEL_IN_NUM, &serving_default_dense_2_input0_output),
+  AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_SINE_MODEL_IN_NUM, &dense_2_input_output),
   AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_SINE_MODEL_OUT_NUM, &dense_2_output),
   &dense_0_layer, 0, NULL)
 
@@ -371,8 +371,8 @@ ai_bool sine_model_configure_activations(
 
   {
     /* Updating activations (byte) offsets */
-    serving_default_dense_2_input0_output_array.data = AI_PTR(NULL);
-    serving_default_dense_2_input0_output_array.data_start = AI_PTR(NULL);
+    dense_2_input_output_array.data = AI_PTR(NULL);
+    dense_2_input_output_array.data_start = AI_PTR(NULL);
     dense_0_output_array.data = AI_PTR(activations + 0);
     dense_0_output_array.data_start = AI_PTR(activations + 0);
     nl_0_output_array.data = AI_PTR(activations + 0);

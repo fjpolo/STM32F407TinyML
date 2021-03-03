@@ -176,13 +176,13 @@
             "format": "float",
             "io_type": "input",
             "mem_pool": "user",
-            "name": "serving_default_dense_2_input0_output_array",
+            "name": "dense_2_input_output_array",
             "offset": "NULL",
             "size": 1,
             "start_offset": "NULL",
             "tensors": [
                 {
-                    "name": "serving_default_dense_2_input0_output",
+                    "name": "dense_2_input_output",
                     "shape": [
                         1,
                         1,
@@ -342,7 +342,7 @@
             "rom": 128,
             "tensors": {
                 "inputs": [
-                    "serving_default_dense_2_input0_output"
+                    "dense_2_input_output"
                 ],
                 "outputs": [
                     "dense_0_output"
@@ -445,9 +445,9 @@
     "c_name": "sine_model",
     "c_nodes_n": 5,
     "c_tensors_n": 12,
-    "date_time": "Wed Mar  3 10:44:30 2021",
+    "date_time": "Wed Mar  3 14:16:36 2021",
     "inputs": [
-        "serving_default_dense_2_input0_output"
+        "dense_2_input_output"
     ],
     "macc": 320,
     "model_name": "model_no_quant",

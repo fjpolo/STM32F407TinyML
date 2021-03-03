@@ -85,7 +85,7 @@ ProjectManager.StackSize=0x1200
 ProjectManager.TargetToolchain=MDK-ARM V5
 ProjectManager.ToolChainLocation=
 ProjectManager.UnderRoot=false
-ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-SystemClock_Config-RCC-false-HAL-false,3-MX_USART6_UART_Init-USART6-false-HAL-true,4-MX_TIM2_Init-TIM2-false-HAL-true,5-MX_CRC_Init-CRC-false-HAL-true,6-MX_TIM14_Init-TIM14-false-HAL-true,7-MX_X_CUBE_AI_Init-STMicroelectronics.X-CUBE-AI.5.2.0-false-HAL-true,8-MX_X_CUBE_AI_Process-STMicroelectronics.X-CUBE-AI.5.2.0-false-HAL-true
+ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-SystemClock_Config-RCC-false-HAL-false,3-MX_USART6_UART_Init-USART6-false-HAL-true,4-MX_TIM2_Init-TIM2-false-HAL-true,5-MX_CRC_Init-CRC-false-HAL-true,6-MX_TIM14_Init-TIM14-false-HAL-true
 RCC.48MHZClocksFreq_Value=48000000
 RCC.AHBFreq_Value=168000000
 RCC.APB1CLKDivider=RCC_HCLK_DIV4
@@ -141,7 +141,7 @@ STMicroelectronics.X-CUBE-AI.5.2.0.ArtificialOoIntelligenceJjXAaCUBEAaAI_version
 STMicroelectronics.X-CUBE-AI.5.2.0.HeapSize=0x200
 STMicroelectronics.X-CUBE-AI.5.2.0.IPParameters=XAaCUBEAaAICcArtificialOoIntelligenceJjCore,HeapSize,StackSize,ModelName-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelType-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelKind-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelHashList,ModelNameList,WorkingBufferStartAddrList,LatestDirectoryUsed-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelStructureFile-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelFlashOccupation-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelRamOccupation-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelMacc-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelActualCompression-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ModelCompression-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,InternalRamActivationBufferMaxSize,ActivationBufferSizeList,MaximumNumberOfInputLayer,MaximumNumberOfOutputLayer,MaximumSizeOfInputLayer,MaximumSizeOfOutputLayer,ValidationInputFileHistory-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e,ValidationOutputFileHistory-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e
 STMicroelectronics.X-CUBE-AI.5.2.0.InternalRamActivationBufferMaxSize=AI_SINE_MODEL_DATA_ACTIVATIONS_SIZE
-STMicroelectronics.X-CUBE-AI.5.2.0.LatestDirectoryUsed-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=C\:\\Daten\\KeilProjects\\AI\\STM32F4_AI_CubeMX_SineWave\\models\\sine\\noquant
+STMicroelectronics.X-CUBE-AI.5.2.0.LatestDirectoryUsed-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=C\:\\Daten\\KeilProjects\\AI\\STM32F407TinyML\\models\\sine\\noquant
 STMicroelectronics.X-CUBE-AI.5.2.0.MaximumNumberOfInputLayer=1
 STMicroelectronics.X-CUBE-AI.5.2.0.MaximumNumberOfOutputLayer=1
 STMicroelectronics.X-CUBE-AI.5.2.0.MaximumSizeOfInputLayer=AI_SINE_MODEL_IN_1_SIZE_BYTES
@@ -155,7 +155,7 @@ STMicroelectronics.X-CUBE-AI.5.2.0.ModelMacc-80e62dcae3fe03d2ba48da2df9289b66645
 STMicroelectronics.X-CUBE-AI.5.2.0.ModelName-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=sine_model
 STMicroelectronics.X-CUBE-AI.5.2.0.ModelNameList=sine_model
 STMicroelectronics.X-CUBE-AI.5.2.0.ModelRamOccupation-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=136
-STMicroelectronics.X-CUBE-AI.5.2.0.ModelStructureFile-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=models/sine/noquant/model_no_quant.tflite
+STMicroelectronics.X-CUBE-AI.5.2.0.ModelStructureFile-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=C\:\\Daten\\KeilProjects\\AI\\STM32F407TinyML\\models\\sine\\noquant\\model_no_quant.tflite
 STMicroelectronics.X-CUBE-AI.5.2.0.ModelType-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=Saved model
 STMicroelectronics.X-CUBE-AI.5.2.0.StackSize=0x1200
 STMicroelectronics.X-CUBE-AI.5.2.0.ValidationInputFileHistory-80e62dcae3fe03d2ba48da2df9289b666455358cc9615b81e828fc11d74efd8e=
