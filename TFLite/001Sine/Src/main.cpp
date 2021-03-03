@@ -29,6 +29,16 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+/*TFLite*/
+#include "tensorflow/lite/micro/kernels/micro_ops.h"
+#include "tensorflow/lite/micro/micro_error_reporter.h"
+#include "tensorflow/lite/micro/micro_interpreter.h"
+//#include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
+#include "tensorflow/lite/micro/kernels/all_ops_resolver.h"
+#include "tensorflow/lite/version.h"
+/*Models*/
+#include "sine_model.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,11 +60,33 @@
 
 /* USER CODE BEGIN PV */
 extern TIM_HandleTypeDef htim14;
+extern UART_HandleTypeDef huart6;
+
+/*TFLite globals*/
+namespace {
+  tflite::ErrorReporter* error_reporter = nullptr;
+  const tflite::Model* model = nullptr;
+  tflite::MicroInterpreter* interpreter = nullptr;
+  TfLiteTensor* model_input = nullptr;
+  TfLiteTensor* model_output = nullptr;
+
+  // Create an area of memory to use for input, output, and other TensorFlow
+  // arrays. You'll need to adjust this by compiling, running, and looking
+  // for errors.
+  constexpr int kTensorArenaSize = 2 * 1024;
+  __attribute__((aligned(16)))uint8_t tensor_arena[kTensorArenaSize];
+} // END namespace
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+
+/*Custom implementation of DebugLog from TensorFlow*/
+extern "C" void DebugLog(const char* s){
+  HAL_UART_Transmit(&huart6, (uint8_t *)s, strlen(s), 100);
+}
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -73,6 +105,34 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	char buf[50];
 	uint32_t buf_len;
+	TfLiteStatus tflite_status;
+  uint32_t num_elements;
+  uint32_t timestamp;
+  float y_val;
+	const uint8_t x_val_count = 100;
+	uint8_t x_val_it = 0;
+	const float x_val[] = {
+													 0.        , 0.06283185, 0.12566371, 0.18849556, 0.25132741,
+													 0.31415927, 0.37699112, 0.43982297, 0.50265482, 0.56548668,
+													 0.62831853, 0.69115038, 0.75398224, 0.81681409, 0.87964594,
+													 0.9424778 , 1.00530965, 1.0681415 , 1.13097336, 1.19380521,
+													 1.25663706, 1.31946891, 1.38230077, 1.44513262, 1.50796447,
+													 1.57079633, 1.63362818, 1.69646003, 1.75929189, 1.82212374,
+													 1.88495559, 1.94778745, 2.0106193 , 2.07345115, 2.136283  ,
+													 2.19911486, 2.26194671, 2.32477856, 2.38761042, 2.45044227,
+													 2.51327412, 2.57610598, 2.63893783, 2.70176968, 2.76460154,
+													 2.82743339, 2.89026524, 2.95309709, 3.01592895, 3.0787608 ,
+													 3.14159265, 3.20442451, 3.26725636, 3.33008821, 3.39292007,
+													 3.45575192, 3.51858377, 3.58141563, 3.64424748, 3.70707933,
+													 3.76991118, 3.83274304, 3.89557489, 3.95840674, 4.0212386 ,
+													 4.08407045, 4.1469023 , 4.20973416, 4.27256601, 4.33539786,
+													 4.39822972, 4.46106157, 4.52389342, 4.58672527, 4.64955713,
+													 4.71238898, 4.77522083, 4.83805269, 4.90088454, 4.96371639,
+													 5.02654825, 5.0893801 , 5.15221195, 5.2150438 , 5.27787566,
+													 5.34070751, 5.40353936, 5.46637122, 5.52920307, 5.59203492,
+													 5.65486678, 5.71769863, 5.78053048, 5.84336234, 5.90619419,
+													 5.96902604, 6.03185789, 6.09468975, 6.1575216 , 6.22035345
+												};
   /* USER CODE END 1 */
   
 
@@ -106,13 +166,105 @@ int main(void)
 	/*Say hi!*/
 	buf_len = sprintf(buf, "\r\n\r\nSTM32F407 TFLiteuC Deep Learning test!\r\n");
 	HAL_UART_Transmit(&huart6, (uint8_t *)buf, buf_len, 100);
+	
+	/*Set up logging (modify tensorflow/lite/micro/debug_log.cc)*/
+  static tflite::MicroErrorReporter micro_error_reporter;
+  error_reporter = &micro_error_reporter;
+	
+	/*Say something to test error reporter*/
+  error_reporter->Report("\r\nSTM32F407 TensorFlow Lite test\r\n");
+	
+	// Map the model into a usable data structure
+  model = tflite::GetModel(sine_model);
+  if (model->version() != TFLITE_SCHEMA_VERSION)
+  {
+    error_reporter->Report("Model version does not match Schema");
+    while(1);
+  }
 
+  // Pull in only needed operations (should match NN layers). Template parameter
+  // <n> is number of ops to be added. Available ops:
+  // tensorflow/lite/micro/kernels/micro_ops.h
+//  static tflite::MicroMutableOpResolver<1> micro_op_resolver;
+//  static tflite::MicroMutableOpResolver micro_op_resolver;
+
+//  // Add dense neural network layer operation
+//  tflite_status = micro_op_resolver.AddBuiltin(
+//      tflite::BuiltinOperator_FULLY_CONNECTED,
+//      tflite::ops::micro::Register_FULLY_CONNECTED());
+//  if (tflite_status != kTfLiteOk)
+//  {
+//    error_reporter->Report("Could not add FULLY CONNECTED op");
+//    while(1);
+//  }	
+	
+	// This pulls in all the operation implementations we need.
+  	static tflite::ops::micro::AllOpsResolver resolver;
+	
+//  // Build an interpreter to run the model with.
+//  static tflite::MicroInterpreter static_interpreter(
+//      model, micro_op_resolver, tensor_arena, kTensorArenaSize, error_reporter);
+//  interpreter = &static_interpreter;  // Build an interpreter to run the model with.
+//  
+	static tflite::MicroInterpreter static_interpreter(
+      model, resolver, tensor_arena, kTensorArenaSize, error_reporter);
+  interpreter = &static_interpreter;
+
+  // Allocate memory from the tensor_arena for the model's tensors.
+  tflite_status = interpreter->AllocateTensors();
+  if (tflite_status != kTfLiteOk)
+  {
+    error_reporter->Report("AllocateTensors() failed");
+    while(1);
+  }
+
+  // Assign model input and output buffers (tensors) to pointers
+  model_input = interpreter->input(0);
+  model_output = interpreter->output(0);
+
+  // Get number of elements in input tensor
+  num_elements = model_input->bytes / sizeof(float);
+  buf_len = sprintf(buf, "Number of input elements: %lu\r\n", (unsigned long)num_elements);
+  HAL_UART_Transmit(&huart6, (uint8_t *)buf, buf_len, 100);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		// Fill input buffer (use test value)
+    for (uint32_t i = 0; i < num_elements; i++  )
+    {
+      model_input->data.f[i] = x_val[x_val_it];
+			x_val_it++;
+			x_val_it %= x_val_count;
+    }
+
+    // Get current timestamp
+    timestamp = htim14.Instance->CNT;
+
+    // Run inference
+    tflite_status = interpreter->Invoke();
+    if (tflite_status != kTfLiteOk)
+    {
+      error_reporter->Report("Invoke failed");
+    }
+
+    // Read output (predicted y) of neural network
+    y_val = model_output->data.f[0];
+
+    // Print output of neural network along with inference time (microseconds)
+    buf_len = sprintf(buf,
+											"In: %f | Out: %f | %lu[uS]\r\n",
+                      x_val[x_val_it-1],
+											y_val,
+                      (unsigned long)(htim14.Instance->CNT - timestamp));
+    HAL_UART_Transmit(&huart6, (uint8_t *)buf, buf_len, 100);
+
+    // Wait before doing it again
+    HAL_Delay(500);
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
