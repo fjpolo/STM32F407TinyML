@@ -6,3 +6,6 @@
 - https://www.digikey.com/en/maker/projects/tinyml-getting-started-with-tensorflow-lite-for-microcontrollers/c0cdd850f5004b098d263400aa294023
 - https://www.digikey.com/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
 - https://github.com/tensorflow/tensorflow/issues/45686#issuecomment-789658362
+
+## Future additions:
+- https://github.com/choas/uTensor_workshop
