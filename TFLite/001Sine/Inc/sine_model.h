@@ -9,7 +9,7 @@
 #ifndef TENSORFLOW_LITE_UTIL_SINE_MODEL_DATA_H_
 #define TENSORFLOW_LITE_UTIL_SINE_MODEL_DATA_H_
 
-extern unsigned char sine_model[];
-extern unsigned int sine_model_len;
+extern const unsigned char sine_model[];
+extern const unsigned int sine_model_len;
 
 #endif  // TENSORFLOW_LITE_UTIL_SINE_MODEL_DATA_H_
