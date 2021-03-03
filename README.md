@@ -9,6 +9,8 @@ CubeMX code must be generated for every project, since libraries are included in
 - https://www.digikey.com/en/maker/projects/tinyml-getting-started-with-tensorflow-lite-for-microcontrollers/c0cdd850f5004b098d263400aa294023
 - https://www.digikey.com/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
 - https://github.com/tensorflow/tensorflow/issues/45686#issuecomment-789658362
+- https://www.coursera.org/learn/introduction-to-embedded-machine-learning
+- https://studio.edgeimpulse.com/
 
 ## ToDo:
 - https://github.com/choas/uTensor_workshop
