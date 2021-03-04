@@ -25,6 +25,10 @@ Disable the following files for compilation:
 - https://github.com/tensorflow/tensorflow/issues/45686#issuecomment-789658362
 - https://www.coursera.org/learn/introduction-to-embedded-machine-learning
 - https://studio.edgeimpulse.com/
+- https://github.com/RashadShubita/STM32F407-tinyML-EdgeImpulse-Motion
+- https://github.com/BoschSensortec/BNO055_driver
+- https://github.com/ivyknob/bno055_stm32
+- https://www.keil.com/pack/doc/compiler/EventRecorder/html/er_use.html
 
 ## ToDo:
 - https://github.com/choas/uTensor_workshop
