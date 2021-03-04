@@ -565,12 +565,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
-        </Group>
-        <Group>
           <GroupName>Middlewares/MachineLearning/my-smartphone-motion-project/Core</GroupName>
           <Files>
             <File>
@@ -2454,6 +2448,12 @@
               <FilePath>../Middlewares/Third_Party/MachineLearning/edgeimpulse/edge-impulse-sdk/porting/zephyr/ei_classifier_porting.cpp</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Compiler</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -3085,12 +3085,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
-        </Group>
-        <Group>
           <GroupName>Middlewares/MachineLearning/my-smartphone-motion-project/Core</GroupName>
           <Files>
             <File>
@@ -5127,6 +5121,12 @@
               <FilePath>../Middlewares/Third_Party/MachineLearning/edgeimpulse/edge-impulse-sdk/porting/zephyr/ei_classifier_porting.cpp</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Compiler</GroupName>
         </Group>
       </Groups>
     </Target>
