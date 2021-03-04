@@ -97,6 +97,7 @@ int main(void)
   MX_CRC_Init();
   MX_TIM14_Init();
   MX_I2C3_Init();
+  MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

@@ -44,18 +44,15 @@
 #define EI_CLASSIFIER_PROJECT_NAME               "my-smartphone-motion-project"
 #define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     5
 #define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        33
-//#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           125
 #define EI_CLASSIFIER_RAW_SAMPLE_COUNT           200
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      3
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
 #define EI_CLASSIFIER_INPUT_WIDTH                0
 #define EI_CLASSIFIER_INPUT_HEIGHT               0
-//#define EI_CLASSIFIER_INTERVAL_MS                16
 #define EI_CLASSIFIER_INTERVAL_MS                10
 #define EI_CLASSIFIER_OUT_TENSOR_NAME            "y_pred/Softmax_1:0"
 #define EI_CLASSIFIER_LABEL_COUNT                4
 #define EI_CLASSIFIER_HAS_ANOMALY                1
-//#define EI_CLASSIFIER_FREQUENCY                  62.5
 #define EI_CLASSIFIER_FREQUENCY                  100
 #define EI_CLASSIFIER_USE_QUANTIZED_DSP_BLOCK    0
 
