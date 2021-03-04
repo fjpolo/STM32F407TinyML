@@ -1,9 +1,21 @@
 # TinyML using different frameworks applied to STM32F407 uC
 
 ## Caution:
-CubeMX code must be generated for every project, since libraries are included in .gitignore. For TFLite projects, the auto-generated main must be changed to .cpp and must be merged with the latest main.cpp (whatever is inside).
+CubeMX code must be generated for every project, since libraries are included in .gitignore. For TFLite projects, the auto-generated main must be changed to .cpp and must be merged with the latest changes from main.c.-
 
 Development IDE: Keil uVision v6
+
+## CubeMXAI/003MagicWand
+
+Modify the following parameters in CubeMXAI\003MagicWand\Middlewares\Third_Party\MachineLearning\edgeimpulse\model-parameters\model_metadata.h:
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           200
+#define EI_CLASSIFIER_INTERVAL_MS                10
+#define EI_CLASSIFIER_FREQUENCY                  100
+
+Disable the following files for compilation:
+- BasicMathFunctionsF16.c
+- CommoTablesF16.c
+- TransformFunctionsF16.c
 
 ## References:
 - https://www.digikey.ph/en/maker/projects/intro-to-tinyml-part-1-training-a-model-for-arduino-in-tensorflow/8f1fc8c0b83d417ab521c48864d2a8ec
