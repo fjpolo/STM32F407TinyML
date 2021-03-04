@@ -3,6 +3,8 @@
 ## Caution:
 CubeMX code must be generated for every project, since libraries are included in .gitignore. For TFLite projects, the auto-generated main must be changed to .cpp and must be merged with the latest main.cpp (whatever is inside).
 
+Development IDE: Keil uVision v6
+
 ## References:
 - https://www.digikey.ph/en/maker/projects/intro-to-tinyml-part-1-training-a-model-for-arduino-in-tensorflow/8f1fc8c0b83d417ab521c48864d2a8ec
 - https://colab.research.google.com/github/tensorflow/tensorflow/blob/master/tensorflow/lite/micro/examples/hello_world/train/train_hello_world_model.ipynb#scrollTo=l4-WhtGpvb-E
