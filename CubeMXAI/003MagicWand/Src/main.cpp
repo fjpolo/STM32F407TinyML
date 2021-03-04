@@ -29,6 +29,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdarg.h>
+#include "bno055_stm32.h"
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #ifdef STM32F407_AI_EventRecorder
 #include "EventRecorder.h"						// https://www.keil.com/pack/doc/compiler/EventRecorder/html/er_use.html
@@ -197,6 +198,11 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 	
+	/*BNO055*/
+	bno055_assignI2C(&hi2c3);
+  bno055_setup();
+  bno055_setOperationModeNDOF();
+	
 	/*signal*/
 	signal_t signal;
 	signal.total_length = sizeof(features) / sizeof(features[0]);
@@ -233,6 +239,25 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		
+		/*BNO055*/
+		bno055_vector_t v;
+//		v = bno055_getVectorEuler();
+//    printf("Heading: %.2f Roll: %.2f Pitch: %.2f\r\n", v.x, v.y, v.z);
+//    v = bno055_getVectorQuaternion();
+//    ei_printf("W: %.2f X: %.2f Y: %.2f Z: %.2f\r\n", v.w, v.x, v.y, v.z);
+		/*Record event*/
+#ifdef STM32F407_AI_EventRecorder
+		EventRecordData (3+EventLevelOp, "BNO055 Started", 17);  // Event at Start
+#endif // STM32F407_AI_EventRecorder
+		v = bno055_getVectorAccelerometer();
+		ei_printf("W: %.2f AccX: %.2f AccY: %.2f AccZ: %.2f\r\n\n\n", v.w, v.x, v.y, v.z);
+		/*Record event*/
+#ifdef STM32F407_AI_EventRecorder
+		EventRecordData (3+EventLevelOp, "BNO055 Done", 17);  // Event at Start
+#endif // STM32F407_AI_EventRecorder		
+		
+		
 		/*result*/
 		ei_impulse_result_t result;
 		
@@ -245,7 +270,7 @@ int main(void)
 		
 		/*Record event*/
 #ifdef STM32F407_AI_EventRecorder
-		EventRecordData (1+EventLevelOp, "Inference Started", 17);  // Event at Start
+		EventRecordData (3+EventLevelOp, "Inference Started", 17);  // Event at Start
 #endif // STM32F407_AI_EventRecorder
 		
 		/*Inference*/
@@ -290,7 +315,7 @@ int main(void)
 		
 		/*Record event*/
 #ifdef STM32F407_AI_EventRecorder
-		EventRecordData (2+EventLevelOp, "Inference Done", 14);  // Event at Finish
+		EventRecordData (4+EventLevelOp, "Inference Done", 14);  // Event at Finish
 #endif // STM32F407_AI_EventRecorder
 		
 		

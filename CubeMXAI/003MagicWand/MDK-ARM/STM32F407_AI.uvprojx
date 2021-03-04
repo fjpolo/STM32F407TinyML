@@ -2652,6 +2652,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>BNO055</GroupName>
+          <Files>
+            <File>
+              <FileName>bno055.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BNO055\bno055.c</FilePath>
+            </File>
+            <File>
+              <FileName>bno055.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BNO055\bno055.h</FilePath>
+            </File>
+            <File>
+              <FileName>bno055_stm32.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BNO055\bno055_stm32.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
@@ -2991,7 +3011,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx,USE_HAL_DRIVER,STM32F407xx, STM32F407_AI_EventRecorder</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F4xx/Include; ../Drivers/CMSIS/Include;../Middlewares/Third_Party/MachineLearning//edgeimpulse/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/Middlewares/ST/AI/Inc/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/cubeai-model/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/DSP/Include/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/DSP/PrivateInclude/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/NN/Include/</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/MachineLearning//edgeimpulse/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/Middlewares/ST/AI/Inc/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/cubeai-model/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/DSP/Include/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/DSP/PrivateInclude/;../Middlewares/Third_Party/MachineLearning//edgeimpulse/edge-impulse-sdk/CMSIS/NN/Include/;../BNO055</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -5301,6 +5321,26 @@
               <FileName>ei_classifier_porting.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../Middlewares/Third_Party/MachineLearning/edgeimpulse/edge-impulse-sdk/porting/zephyr/ei_classifier_porting.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>BNO055</GroupName>
+          <Files>
+            <File>
+              <FileName>bno055.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BNO055\bno055.c</FilePath>
+            </File>
+            <File>
+              <FileName>bno055.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BNO055\bno055.h</FilePath>
+            </File>
+            <File>
+              <FileName>bno055_stm32.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BNO055\bno055_stm32.h</FilePath>
             </File>
           </Files>
         </Group>
