@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'STM32F407_AI' 
- * Target:  'STM32F407_AI' 
+ * Target:  'STM32F407_AI_EventRecorder' 
  */
 
 #ifndef RTE_COMPONENTS_H

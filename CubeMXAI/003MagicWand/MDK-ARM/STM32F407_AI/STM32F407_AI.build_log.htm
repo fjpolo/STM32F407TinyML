@@ -26,25 +26,15 @@ Project File Date:  03/04/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.12', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'STM32F407_AI'
-../Src/main.cpp(83): error: static declaration of 'ei_printf' follows non-static declaration
-static void ei_printf(const char *format, ...){
-            ^
-../Middlewares/Third_Party/MachineLearning//edgeimpulse\edge-impulse-sdk/classifier/ei_run_dsp.h(35): note: previous declaration is here
-extern void ei_printf(const char *format, ...);
-            ^
-../Src/main.cpp(147): error: call to 'ei_printf' is ambiguous
-    ei_printf("run_classifier returned: %d\n", res);
-    ^~~~~~~~~
-../Middlewares/Third_Party/MachineLearning//edgeimpulse\edge-impulse-sdk/classifier/ei_run_dsp.h(35): note: candidate function
-extern void ei_printf(const char *format, ...);
-            ^
-../Src/main.cpp(83): note: candidate function
-static void ei_printf(const char *format, ...){
-            ^
-2 errors generated.
+Build target 'STM32F407_AI_EventRecorder'
 compiling main.cpp...
-"STM32F407_AI\STM32F407_AI.axf" - 2 Error(s), 0 Warning(s).
+linking...
+STM32F407_AI\STM32F407_AI.axf: Warning: L6439W: Multiply defined Global Symbol std::__throw_length_error(const char*) defined in .text._ZSt20__throw_length_errorPKc(fast-dct-fft.o) rejected in favor of Symbol defined in .text._ZSt20__throw_length_errorPKc(main.o).
+STM32F407_AI\STM32F407_AI.axf: Warning: L6439W: Multiply defined Global Symbol std::__throw_bad_function_call() defined in .text._ZSt25__throw_bad_function_callv(fast-dct-fft.o) rejected in favor of Symbol defined in .text._ZSt25__throw_bad_function_callv(main.o).
+Program Size: Code=91068 RO-data=124664 RW-data=4380 ZI-data=33868  
+Finished: 0 information, 2 warning and 0 error messages.
+FromELF: creating hex file...
+"STM32F407_AI\STM32F407_AI.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -55,20 +45,32 @@ Package Vendor: ARM
    * Component: CORE Version: 5.3.0
 
 Package Vendor: Keil
+                http://www.keil.com/pack/Keil.ARM_Compiler.1.6.2.pack
+                Keil.ARM_Compiler.1.6.2
+                Keil ARM Compiler extensions for ARM Compiler 5 and ARM Compiler 6
+   * Component: Event Recorder Variant: DAP Version: 1.4.0
+
+Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
                 Keil.STM32F4xx_DFP.2.14.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  .\RTE\_STM32F407_AI
+  .\RTE\Compiler
+  .\RTE\_STM32F407_AI_EventRecorder
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  C:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.2\Include
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Target not created.
-Build Time Elapsed:  00:00:40
+
+   * Component: Keil.ARM Compiler::Compiler:Event Recorder:DAP:1.4.0
+      Include file:  Config\EventRecorderConf.h
+      Include file:  Include\EventRecorder.h
+      Source file:   Source\EventRecorder.c
+Build Time Elapsed:  00:00:23
 </pre>
 </body>
 </html>
