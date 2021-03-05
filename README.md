@@ -29,6 +29,8 @@ Disable the following files for compilation:
 - https://github.com/BoschSensortec/BNO055_driver
 - https://github.com/ivyknob/bno055_stm32
 - https://www.keil.com/pack/doc/compiler/EventRecorder/html/er_use.html
+- https://www.tensorflow.org/lite/microcontrollers
+- https://www.tensorflow.org/lite/microcontrollers/get_started
 
 ## ToDo:
 - https://github.com/choas/uTensor_workshop
